@@ -1,0 +1,10 @@
+#!/bin/sh
+PORT=$(vagrant ssh-config | grep Port | grep -o '[0-9]\+')
+KEY=$(vagrant ssh-config | grep IdentityFile | tr ' ' '\n' | tail -n1)
+ssh -q \
+    -o UserKnownHostsFile=/dev/null \
+    -o StrictHostKeyChecking=no \
+    -i "$KEY" \
+    vagrant@localhost \
+    -p "$PORT" \
+    "$@"
