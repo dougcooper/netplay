@@ -7,6 +7,8 @@ Vagrant.configure("2") do |config|
     #internal network to talk to yocto
     config.vm.network "private_network", type: "dhcp"
 
+    config.vm.hostname = "packet-sim"
+
     config.vm.provision "shell", path: "provision.sh" do |s|
         s.privileged = false
     end

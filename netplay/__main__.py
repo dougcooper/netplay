@@ -28,6 +28,10 @@ from_mac=get_if_hwaddr(args.interface)
 to_ip=args.destination
 to_mac=getmacbyip(args.destination)
 
+if to_mac is None:
+    print("cannot get mac address of target")
+    exit(1)
+
 info = {
     'from':
         {'ip': get_if_addr(args.interface),
